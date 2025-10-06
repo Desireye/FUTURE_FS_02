@@ -1,6 +1,6 @@
 const API_BASE_URL =
   process.env.NODE_ENV === "production"
-    ? "https://your-api-name.onrender.com" // ⬅️ Replace this with your actual Render API URL
+    ? "https://future-fs-02-r5cj.onrender.com/"
     : "http://localhost:3000";
 
 export default API_BASE_URL;

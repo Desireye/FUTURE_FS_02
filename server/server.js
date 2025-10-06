@@ -4,7 +4,6 @@ const dotenv = require('dotenv');
 const connectDB = require('./db.js');
 const productModel = require('./models/product.js')
 const pRouter = require("./routes/productsRouter.js");
-
 dotenv.config()
 
 const app = express();
@@ -27,4 +26,4 @@ app.get('/', async (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => console.log(`App running on port ${PORT}`))
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`))

@@ -1,5 +1,5 @@
 const express = require("express");
-const productModel = require("../models/product.js")
+const productModel = require('./models/product.js');
 
 const pRouter = express.Router();
 
@@ -12,4 +12,4 @@ pRouter.get("/", async (req, res) => {
   }
 });
 
-module.exports = pRouter;
+export default pRouter;
