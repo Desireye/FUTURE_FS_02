@@ -1,8 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import API_BASE_URL from "../../apiConfig";
 
 export const fetchProducts = createAsyncThunk("products/fetchProducts", 
     async () => {
-        const res = await fetch("http://localhost:3000");
+        const res = await fetch(`${API_BASE_URL}/api/products`);
         const data = await res.json();
         return data.products;
     }
@@ -10,8 +11,7 @@ export const fetchProducts = createAsyncThunk("products/fetchProducts",
 
 const initialState = {
     items: [],
-    filteredItems : [],
-    searchTerm: "",
+    filteredItems : [],    searchTerm: "",
     status: "idle",
     error: null
 };
@@ -23,7 +23,7 @@ const productSlice = createSlice({
     setSearchTerm: (state, action) => {
       state.searchTerm = action.payload;
       if (state.searchTerm.trim() === "") {
-        state.filteredItems = state.items; // reset if cleared
+        state.filteredItems = state.items;
       } else {
         state.filteredItems = state.items.filter((product) =>
           product.product_name
@@ -41,7 +41,7 @@ const productSlice = createSlice({
       .addCase(fetchProducts.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.items = action.payload;
-        state.filteredItems = action.payload; // ✅ initialize filtered list
+        state.filteredItems = action.payload;
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.status = "failed";
